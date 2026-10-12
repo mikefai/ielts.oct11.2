@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IELTS Academic Reading &amp; Writing — Strategy &amp; Hard Mock Exam</title>
+<style>
+:root{
+  --ink:#1b2430; --muted:#566274; --line:#d6dce4; --accent:#1f5fae; --accent-ink:#fff;
+  --amber-bg:#fff4d6; --amber-line:#e0b341; --ok:#17734a; --bad:#b3261e; --mark:#ffe58a; --panel:#f6f8fb;
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
+button,select,input,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4{line-height:1.25}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
+.topbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:10px 16px}
+.brand{font-weight:700;font-size:1.05rem}
+.brand small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+nav.pagenav{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px}
+nav.pagenav button{min-height:40px;padding:0 14px;border:1px solid var(--line);background:#fff;border-radius:999px;cursor:pointer;font-size:.92rem}
+nav.pagenav button.active{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.btn{min-height:44px;padding:0 14px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,.subnav button:focus-visible,nav.pagenav button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+main{max-width:1200px;margin:0 auto;padding:0 0 60px}
+.page{display:none;padding:20px}
+.page.active{display:block}
+.wrap{max-width:860px;margin:0 auto}
+.callout{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:8px;padding:12px 16px;margin:16px 0}
+.callout strong{display:block;margin-bottom:4px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+table{border-collapse:collapse;width:100%;margin:10px 0}
+table th,table td{border:1px solid var(--line);padding:8px 10px;text-align:left;font-size:.95rem}
+table th{background:var(--panel)}
+.tag{display:inline-block;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.8rem;color:var(--muted);margin:0 0 8px}
+details{margin:10px 0}
+summary{cursor:pointer;min-height:40px;display:flex;align-items:center;font-weight:600}
+hr.sep{border:none;border-top:1px solid var(--line);margin:28px 0}
+/* mock exam shell */
+.examhead{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:9}
+.examtools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:8px 16px}
+.subnav{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px}
+.subnav button{min-width:44px;min-height:40px;padding:0 14px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer}
+.subnav button.active{background:var(--panel);border-color:var(--accent);font-weight:700}
+#clock,[class^="clock-"]{font-variant-numeric:tabular-nums;font-weight:700;font-size:1.1rem;padding:5px 12px;border:1px solid var(--line);border-radius:8px;min-width:5.2ch;text-align:center}
+.warn{background:var(--amber-bg);border-color:var(--amber-line)}
+.done{background:#fde8e6;border-color:var(--bad);color:var(--bad)}
+.status{min-height:1.3em;padding:2px 16px;color:var(--muted);font-size:.88rem}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:60vh}
+.pane{padding:16px 20px;overflow:auto;max-height:70vh}
+.pane+.pane{border-left:1px solid var(--line)}
+@media (max-width:800px){.split{grid-template-columns:1fr}.pane{max-height:none}.pane+.pane{border-left:0;border-top:1px solid var(--line)}}
+mark{background:var(--mark);padding:0 1px}
+.ptabs{display:flex;gap:6px;flex-wrap:wrap;padding:10px 16px 0}
+.ptabs button{min-height:40px;padding:0 12px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer}
+.ptabs button.active{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.passagegroup{display:none}
+.passagegroup.active{display:grid}
+.q{padding:12px 0;border-bottom:1px solid var(--line)}
+.q p{margin:0 0 8px}
+.q label{display:block;padding:6px 0;cursor:pointer}
+.q input[type=text]{width:100%;max-width:22rem;min-height:40px;padding:0 10px;border:1px solid var(--line);border-radius:8px}
+.q select{min-height:40px;border:1px solid var(--line);border-radius:8px;padding:0 8px;max-width:100%}
+.limit{color:var(--muted);font-size:.84rem}
+.fb{margin-top:6px;font-size:.92rem}
+.fb.ok{color:var(--ok)} .fb.bad{color:var(--bad)}
+textarea.essay{width:100%;min-height:46vh;padding:12px;border:1px solid var(--line);border-radius:8px;line-height:1.6;resize:vertical}
+.count{display:flex;gap:16px;align-items:center;margin:8px 0;font-variant-numeric:tabular-nums;font-size:.92rem}
+.count .met{color:var(--ok);font-weight:700}
+svg{max-width:100%;height:auto}
+#readingSummary,.wsummary{display:none}
+#readingSummary.show,.wsummary.show{display:block}
+.para-label{font-weight:700;color:var(--accent);margin-right:4px}
+footer{padding:24px 16px;color:var(--muted);font-size:.85rem;text-align:center}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="brand">LBEnglishCo — IELTS Academic Prep<small>Reading &amp; Writing strategy, plus a hard (Band 7–8) mock exam</small></div>
+  </div>
+  <nav class="pagenav" aria-label="Main sections">
+    <button type="button" data-page="home" class="active">Home</button>
+    <button type="button" data-page="reading">Reading Strategy</button>
+    <button type="button" data-page="writing1">Writing Task 1</button>
+    <button type="button" data-page="writing2">Writing Task 2</button>
+    <button type="button" data-page="mock">Mock Exam (Hard)</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============================================================ HOME ============================================================ -->
+<section class="page active" id="page-home">
+<div class="wrap">
+  <h1>Welcome</h1>
+  <p>This page has four parts. Work through the strategy sections first, then use the hard mock exam
+  to test yourself under real exam timing. Everything on this page runs in your browser — nothing is
+  sent anywhere, and nothing saves automatically, so finish a section in one sitting if you can.</p>
+
+  <div class="panel">
+    <h3>How to use this page</h3>
+    <ol>
+      <li><strong>Reading Strategy</strong> — the skim–scan–read method, time management, and all 11 question types you'll meet in the real test.</li>
+      <li><strong>Writing Task 1 Strategy</strong> — how to describe data (graphs, charts, tables, processes, maps) in an overview + body structure.</li>
+      <li><strong>Writing Task 2 Strategy</strong> — how to structure a 4-paragraph essay for all 5 essay types.</li>
+      <li><strong>Mock Exam (Hard)</strong> — a full, timed, Band 7–8 difficulty test: 3 Reading passages (40 questions, 60 minutes), Writing Task 1 (20 minutes), Writing Task 2 (40 minutes). Model answers and an answer key are hidden until you click "reveal".</li>
+    </ol>
+  </div>
+
+  <div class="callout">
+    <strong>A note on L1 interference (Turkish)</strong>
+    Every strategy section below flags the specific errors Turkish-speaking students make most often —
+    these are predictable patterns from differences between Turkish and English, not signs of weak ability.
+    Knowing the pattern is often enough to fix it.
+  </div>
+
+  <h3>Band descriptor quick reference — Writing</h3>
+  <table>
+    <tr><th>Band</th><th>Profile</th></tr>
+    <tr><td>5.0</td><td>Limited range; repetitive vocabulary; frequent errors affecting communication</td></tr>
+    <tr><td>5.5</td><td>Some relevant ideas; limited cohesion; restricted vocabulary; noticeable errors</td></tr>
+    <tr><td>6.0</td><td>Relevant position; some mixed cohesion; adequate vocabulary; some errors</td></tr>
+    <tr><td>6.5</td><td>Clear position; generally appropriate cohesion; good range with some errors</td></tr>
+    <tr><td>7.0</td><td>Logically organised; flexible vocabulary; frequent error-free sentences</td></tr>
+    <tr><td>7.5</td><td>Well-developed; varied cohesion; wide range; occasional non-systematic errors</td></tr>
+    <tr><td>8.0</td><td>Fully developed; sophisticated cohesion; wide precise vocabulary; rare errors</td></tr>
+  </table>
+
+  <p class="tag">Reading: 60 minutes · 3 passages · 40 questions</p><br>
+  <p class="tag">Writing Task 1: 20 minutes · 150 words minimum</p><br>
+  <p class="tag">Writing Task 2: 40 minutes · 250 words minimum</p>
+</div>
+</section>
+
+<!-- ============================================================ READING STRATEGY ============================================================ -->
+<section class="page" id="page-reading">
+<div class="wrap">
+  <h1>Reading Strategy</h1>
+
+  <h2>1. The skim–scan–read sequence</h2>
+  <ol>
+    <li><strong>Skim</strong> the passage first (60–90 seconds): read the title, first and last sentence of each paragraph. You're building a map of where topics live, not understanding every detail.</li>
+    <li><strong>Scan</strong> for the exact wording or an obvious paraphrase of each question's keywords, using your map to go straight to the right paragraph instead of re-reading from the top.</li>
+    <li><strong>Read</strong> closely only the sentence (or two) around the match you found, to confirm the answer and rule out a near-miss distractor.</li>
+  </ol>
+
+  <h2>2. Time management</h2>
+  <p>You get one 60-minute clock for all three passages — there's no separate time per passage in the real test.
+  As a guide: roughly <strong>17 minutes</strong> for Passage 1, <strong>20 minutes</strong> for Passage 2,
+  <strong>23 minutes</strong> for Passage 3 (passages get harder, so later ones deserve more time). This split
+  is a coaching heuristic, not an official rule — adjust it to your own pace in practice.</p>
+  <div class="callout"><strong>Never leave a blank answer.</strong> There's no penalty for a wrong guess, so always
+  put something down, even a guess, before time runs out.</div>
+
+  <h2>3. All 11 question types</h2>
+
+  <h3>True / False / Not Given (TFNG)</h3>
+  <p>Tests whether a statement matches a <em>fact</em> in the passage. <strong>True</strong> = passage confirms it.
+  <strong>False</strong> = passage directly contradicts it. <strong>Not Given</strong> = the passage simply never
+  mentions it — it is neither confirmed nor denied.</p>
+  <div class="panel"><em>Passage says:</em> "The bridge, completed in 1932, was the longest in the country for over fifty years."<br>
+  <em>Statement:</em> "The bridge was the longest in the world." → <strong>Not Given</strong> — the passage only claims "in the country", not "in the world". It doesn't deny the world claim; it just never raises it.</div>
+
+  <h3>Yes / No / Not Given (YNNG)</h3>
+  <p>Same logic as TFNG, but tests the <em>writer's opinion or claim</em>, not a fact. Used in passages that argue a position.</p>
+
+  <h3>Multiple Choice (MCQ)</h3>
+  <p>Read the question stem first, predict an answer in your own words, then eliminate options that are
+  <em>true but not what was asked</em>, <em>too extreme</em>, or <em>correct for the wrong part of the passage</em>.</p>
+
+  <h3>Matching Headings (MH)</h3>
+  <p>You get <em>more headings than paragraphs</em> — some are decoys. Match the paragraph's <strong>main idea</strong>,
+  not a single word that happens to appear in it; the decoys are usually built from a repeated keyword attached to the wrong idea.</p>
+
+  <h3>Matching Information (MI)</h3>
+  <p>You're told which piece of information to find (an example, a date, a reason, a comparison) and must say which
+  paragraph it's in. Scan for the <em>type</em> of information requested, not just a keyword.</p>
+
+  <h3>Matching Features (MF)</h3>
+  <p>Match a name, date, or term to a description. Watch for distractors where the same person/thing is
+  mentioned twice but only one mention matches the specific claim in the question.</p>
+
+  <h3>Sentence Completion (SC)</h3>
+  <p>Complete a sentence using words taken <em>directly from the passage</em>, inside a stated word limit
+  (e.g. "NO MORE THAN TWO WORDS"). Check grammar: your answer must fit the sentence that's already started.</p>
+
+  <h3>Summary Completion (SumC)</h3>
+  <p>Like sentence completion, but across a short paragraph-length summary of part of the passage. Read the
+  whole summary first to know the topic, then fill gaps in order.</p>
+
+  <h3>Note / Table / Flow-Chart / Diagram Completion</h3>
+  <p>Same word-limit rules as above, applied to a structured format. Diagram labelling often tests
+  vocabulary for parts of a process or object — scan for the relevant stage, not the whole passage.</p>
+
+  <h3>Short Answer (SA)</h3>
+  <p>Answer a direct question using words from the passage, inside a word limit. Answer <em>exactly</em> what's
+  asked — no extra words, or the word-limit rule marks it wrong even if the idea is right.</p>
+
+  <h3>Matching Sentence Endings (MSE)</h3>
+  <p>A sentence beginning must be completed with the <em>logically and grammatically correct</em> ending from a list.
+  Several endings may seem plausible — only one fits both the grammar and the passage's meaning.</p>
+
+  <div class="callout">
+    <strong>Turkish L1 pattern: "Not Given" read as "False"</strong>
+    Turkish academic writing tends to state things explicitly, so Turkish-speaking readers often assume that if
+    an idea isn't stated, it must be false. Ask yourself: does the passage <em>contradict</em> this (False), or
+    does it simply <em>never mention</em> it (Not Given)? If you can't point to the sentence that denies it,
+    it's Not Given.
+  </div>
+  <div class="callout">
+    <strong>Turkish L1 pattern: word-for-word translation of collocations</strong>
+    When scanning for a paraphrase, Turkish speakers sometimes expect the exact Turkish-collocation equivalent
+    (e.g. looking for "make a decision" when the passage paraphrases with "settled on") and miss the match.
+    Train yourself to expect <em>synonyms and restructured sentences</em>, not just substituted single words.
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ WRITING TASK 1 STRATEGY ============================================================ -->
+<section class="page" id="page-writing1">
+<div class="wrap">
+  <h1>Writing Task 1 Strategy</h1>
+  <p>20 minutes · 150 words minimum · describe, don't explain causes or give opinions.</p>
+
+  <h2>1. The three-part structure</h2>
+  <ol>
+    <li><strong>Introduction</strong> (1 sentence) — paraphrase the task statement in your own words.</li>
+    <li><strong>Overview</strong> (1–2 sentences) — the two or three <em>biggest</em> patterns, with no numbers. This is the single highest-value sentence in the whole task.</li>
+    <li><strong>Body paragraphs</strong> (2 paragraphs) — selected supporting data, grouped logically (by category, by time period, or by similarity/difference), not every number in the chart.</li>
+  </ol>
+
+  <h2>2. The overview formula</h2>
+  <div class="panel">"Overall, it is clear that [biggest trend/comparison #1], while [biggest trend/comparison #2]."</div>
+  <p>Write the overview <em>before</em> you look at small details — if you can't summarise the chart in one
+  sentence without numbers, you haven't understood its main story yet.</p>
+
+  <h2>3. Data selection</h2>
+  <p>You cannot and should not report every figure. Select the data that supports your overview: the highest,
+  the lowest, the most dramatic change, and the most useful comparisons. Group similar figures together
+  ("the three smallest sources all fell below 15%") rather than listing each one in a flat sequence.</p>
+
+  <h2>4. Trend and change language (Band 7 range)</h2>
+  <div class="grid2">
+    <div class="panel"><strong>Verbs</strong><br>rose / climbed / surged · fell / declined / dropped · fluctuated · remained stable · peaked at · bottomed out at</div>
+    <div class="panel"><strong>Nouns</strong><br>a steady rise · a sharp decline · a slight fluctuation · a gradual increase · a dramatic surge</div>
+  </div>
+  <div class="panel"><strong>Band 7 linkers:</strong> whereas / while (for contrast within one sentence) · in contrast to · similarly / likewise · by comparison · this was followed by · this figure subsequently rose to</div>
+
+  <h2>5. One worked example per visual type</h2>
+
+  <h3>Line graph</h3>
+  <div class="panel">Data: internet usage in three countries, 2000–2020, all rising but at different rates.<br>
+  <em>Overview:</em> "Overall, internet usage increased in all three countries over the period, although Country A overtook Country B to become the highest by 2020."</div>
+
+  <h3>Bar chart</h3>
+  <div class="panel">Data: spending by category across four age groups.<br>
+  <em>Overview:</em> "Overall, older age groups spent proportionally more on healthcare, whereas younger groups allocated the largest share of their budget to housing."</div>
+
+  <h3>Pie chart(s)</h3>
+  <div class="panel">Data: household energy use by source, compared across two years.<br>
+  <em>Overview:</em> "Overall, reliance on fossil fuels fell sharply between the two years shown, while the share from renewable sources rose to become the largest single category."</div>
+
+  <h3>Table</h3>
+  <div class="panel">Data: tourist arrivals by country of origin across three years.<br>
+  <em>Overview:</em> "Overall, the number of visitors from most countries grew steadily, with one country standing out for a sudden fall in the final year."</div>
+
+  <h3>Process diagram</h3>
+  <p>No overview of "biggest trends" here — instead, state how many stages there are and whether the process is
+  linear or cyclical, then describe each stage in sequence using the passive voice and sequencing linkers.</p>
+  <div class="panel"><em>Overview:</em> "Overall, the diagram illustrates a five-stage process by which raw sewage is converted into clean water for reuse, beginning with initial filtration and ending with chemical disinfection."</div>
+
+  <h3>Map comparison</h3>
+  <p>State the overall direction of change (e.g. from agricultural to residential/urban land) before detailing
+  individual features that were added, removed, or relocated.</p>
+  <div class="panel"><em>Overview:</em> "Overall, the area changed from a mainly agricultural landscape in 1990 to a predominantly residential one by 2020, with a new road network replacing the original farm tracks."</div>
+
+  <div class="callout">
+    <strong>Turkish L1 pattern: omitted articles</strong>
+    Turkish has no equivalent of "a/an/the", so articles are easy to drop in English: "✗ Number of visitors
+    increased" → "✓ <u>The</u> number of visitors increased." Proofread Task 1 answers specifically for missing
+    articles before nouns referring to a specific, already-identified thing.
+  </div>
+  <div class="callout">
+    <strong>Turkish L1 pattern: under-use of the passive voice</strong>
+    Turkish uses active structures more than English academic description does. In process diagrams especially,
+    English prefers "The water <u>is filtered</u>" over "They filter the water" (there usually is no stated "they").
+    Practise converting your draft sentences from active to passive where no agent is named.
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ WRITING TASK 2 STRATEGY ============================================================ -->
+<section class="page" id="page-writing2">
+<div class="wrap">
+  <h1>Writing Task 2 Strategy</h1>
+  <p>40 minutes · 250 words minimum · a clear position, held consistently from introduction to conclusion.</p>
+
+  <h2>1. The 4-paragraph structure</h2>
+  <ol>
+    <li><strong>Introduction</strong> — paraphrase the question, then state your thesis (your answer/position) in one clear sentence.</li>
+    <li><strong>Body paragraph 1</strong> — one main idea, a topic sentence, an explanation, and a specific example.</li>
+    <li><strong>Body paragraph 2</strong> — a second main idea, same pattern: topic sentence → explanation → example.</li>
+    <li><strong>Conclusion</strong> — restate your position in different words; never introduce a brand-new idea here.</li>
+  </ol>
+
+  <h2>2. The thesis-statement formula</h2>
+  <div class="panel">"While [brief acknowledgement of the other side], this essay will argue that [your clear position], mainly because [your strongest reason]."</div>
+
+  <h2>3. The topic-sentence method</h2>
+  <p>Start every body paragraph with one sentence that states the paragraph's single main idea in your own
+  words. Everything else in the paragraph exists only to support that sentence — if a sentence doesn't support
+  it, cut it or move it.</p>
+
+  <h2>4. Position consistency</h2>
+  <p>Whatever you argue in the introduction must still be true in the conclusion. Examiners specifically check
+  for this under Task Response — a position that quietly shifts loses marks even if each paragraph is well written.</p>
+
+  <h2>5. One worked example per essay type</h2>
+
+  <h3>Opinion essay</h3>
+  <p><em>Prompt pattern:</em> "To what extent do you agree or disagree...?"</p>
+  <div class="panel">Thesis: "While some believe that remote work reduces productivity, this essay will argue that it in fact increases it for most employees, mainly because it removes commuting time and office distractions."</div>
+
+  <h3>Discussion essay (both views)</h3>
+  <p><em>Prompt pattern:</em> "Discuss both these views and give your own opinion."</p>
+  <div class="panel">Structure: body 1 = the first view with its strongest justification; body 2 = the second view with its strongest justification; your opinion can appear in the introduction, threaded through both bodies, and restated in the conclusion.</div>
+
+  <h3>Problem / Solution essay</h3>
+  <p><em>Prompt pattern:</em> "What problems does this cause, and what solutions can be suggested?"</p>
+  <div class="panel">Body 1 = problems (cause → effect); Body 2 = solutions, ideally matched one-to-one against the problems raised in Body 1.</div>
+
+  <h3>Advantages / Disadvantages essay</h3>
+  <p><em>Prompt pattern:</em> "Discuss the advantages and disadvantages."</p>
+  <div class="panel">Body 1 = advantages; Body 2 = disadvantages. If the prompt also asks "do the advantages outweigh the disadvantages?", your thesis and conclusion must explicitly answer that.</div>
+
+  <h3>Direct Question essay</h3>
+  <p><em>Prompt pattern:</em> two distinct questions, each needing its own answer.</p>
+  <div class="panel">Body 1 answers question 1 directly; Body 2 answers question 2 directly. Don't blend them into one vague paragraph — examiners check each question is addressed separately.</div>
+
+  <div class="callout">
+    <strong>Turkish L1 pattern: translated discourse connectors</strong>
+    Turkish essay style often produces connectors translated too literally, e.g. "In addition to this
+    situation..." where English prefers "Moreover," / "Furthermore," / "What is more,". Keep a short list of
+    natural English linkers and vary them rather than translating Turkish phrase-by-phrase.
+  </div>
+  <div class="callout">
+    <strong>Turkish L1 pattern: relative clause errors</strong>
+    Turkish places descriptive clauses <em>before</em> the noun ("the [sentence] person"), which can produce
+    English errors like "✗ The increasing pollution levels country" instead of "✓ the country <u>where</u>
+    pollution levels are increasing." Check every long noun phrase for a missing relative pronoun (who/which/that/where).
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ MOCK EXAM ============================================================ -->
+<section class="page" id="page-mock">
+  <div class="wrap" style="padding:20px 20px 0">
+    <h1>Hard Mock Exam — Band 7–8 difficulty</h1>
+    <p>Three sections, each timed separately. Officially Writing Task 1 and Task 2 share one 60-minute
+    section — the 20/40 split used here is a coaching heuristic so you can practise each task's timing on its own.</p>
+  </div>
+  <nav class="subnav" aria-label="Mock exam sections">
+    <button type="button" data-sub="r" class="active">Reading</button>
+    <button type="button" data-sub="w1">Writing Task 1</button>
+    <button type="button" data-sub="w2">Writing Task 2</button>
+  </nav>
+
+  <!-- ---------------- READING MOCK ---------------- -->
+  <div class="subpage active" id="sub-r">
+    <div class="examhead">
+      <div class="examtools">
+        <strong>Academic Reading — 60 minutes, 3 passages, 40 questions</strong>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span id="r-clock" aria-live="off">60:00</span>
+          <button class="btn" id="r-start" type="button">Start</button>
+          <button class="btn" id="r-pause" type="button" hidden>Pause</button>
+          <button class="btn" id="r-hl" type="button">Highlight</button>
+          <button class="btn" id="r-hlclear" type="button">Clear highlights</button>
+          <button class="btn primary" id="r-reveal" type="button">Check all answers</button>
+        </div>
+      </div>
+      <div class="status" id="r-status"></div>
+    </div>
+    <div class="ptabs" role="tablist" aria-label="Passage switcher">
+      <button type="button" data-p="p1" class="active">Passage 1</button>
+      <button type="button" data-p="p2">Passage 2</button>
+      <button type="button" data-p="p3">Passage 3</button>
+    </div>
+    <div class="wrap" style="padding:0 20px"><div id="readingSummary" class="panel" aria-live="polite"></div></div>
+    <div id="readingRoot"></div>
+  </div>
+
+  <!-- ---------------- WRITING TASK 1 MOCK ---------------- -->
+  <div class="subpage" id="sub-w1" style="display:none">
+    <div class="examhead">
+      <div class="examtools">
+        <strong>Writing Task 1 — 20 minutes</strong>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span id="w1-clock" aria-live="off">20:00</span>
+          <button class="btn" id="w1-start" type="button">Start</button>
+          <button class="btn" id="w1-pause" type="button" hidden>Pause</button>
+          <button class="btn primary" id="w1-reveal" type="button">Show model answer</button>
+        </div>
+      </div>
+      <div class="status" id="w1-status"></div>
+    </div>
+    <div class="split">
+      <section class="pane">
+        <p><strong>Task:</strong> The chart below shows the proportion of electricity generated from five
+        different sources in Country Y in 1998, 2008 and 2018. The table shows the total amount of electricity
+        produced, in terawatt-hours (TWh), in each of these years.</p>
+        <p>Summarise the information by selecting and reporting the main features, and make comparisons where
+        relevant. Write at least 150 words.</p>
+        <div class="panel" id="w1-visual"></div>
+      </section>
+      <section class="pane">
+        <textarea class="essay" id="w1-essay" aria-label="Your answer" spellcheck="false"></textarea>
+        <div class="count"><span>Words: <strong id="w1-wc">0</strong></span><span>Paragraphs: <strong id="w1-pc">0</strong></span><span id="w1-wmin" class="limit"></span></div>
+        <div id="w1-out" class="wsummary"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ---------------- WRITING TASK 2 MOCK ---------------- -->
+  <div class="subpage" id="sub-w2" style="display:none">
+    <div class="examhead">
+      <div class="examtools">
+        <strong>Writing Task 2 — 40 minutes</strong>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span id="w2-clock" aria-live="off">40:00</span>
+          <button class="btn" id="w2-start" type="button">Start</button>
+          <button class="btn" id="w2-pause" type="button" hidden>Pause</button>
+          <button class="btn primary" id="w2-reveal" type="button">Show model answer</button>
+        </div>
+      </div>
+      <div class="status" id="w2-status"></div>
+    </div>
+    <div class="split">
+      <section class="pane">
+        <p><strong>Task:</strong> Some people believe that the primary purpose of a university education is to
+        prepare individuals for a specific career, while others argue that it should focus on broadening a
+        person's intellectual development regardless of career relevance.</p>
+        <p>Discuss both these views and give your own opinion.</p>
+        <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.
+        Write at least 250 words.</p>
+      </section>
+      <section class="pane">
+        <textarea class="essay" id="w2-essay" aria-label="Your answer" spellcheck="false"></textarea>
+        <div class="count"><span>Words: <strong id="w2-wc">0</strong></span><span>Paragraphs: <strong id="w2-pc">0</strong></span><span id="w2-wmin" class="limit"></span></div>
+        <div id="w2-out" class="wsummary"></div>
+      </section>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>Original practice material for classroom use — not copied from any published test. Built for LBEnglishCo.</footer>
+
+<script>
+'use strict';
+var $ = function(s,r){ return (r||document).querySelector(s); };
+var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+
+/* ============================== top-level page nav ============================== */
+$$('nav.pagenav button').forEach(function(btn){
+  btn.onclick = function(){
+    $$('nav.pagenav button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    $$('.page').forEach(function(p){ p.classList.remove('active'); });
+    $('#page-' + btn.dataset.page).classList.add('active');
+    window.scrollTo(0,0);
+  };
+});
+
+/* ============================== mock exam sub-nav ============================== */
+$$('.subnav button').forEach(function(btn){
+  btn.onclick = function(){
+    $$('.subnav button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    $$('.subpage').forEach(function(p){ p.style.display = 'none'; });
+    $('#sub-' + btn.dataset.sub).style.display = '';
+  };
+});
+
+/* ============================== generic countdown timer ============================== */
+function makeTimer(opts){
+  // opts: minutes, clockEl, startBtn, pauseBtn, statusEl, onExpire
+  var remaining = Math.round(opts.minutes*60), timerId=null, running=false;
+  function fmt(s){ s=Math.max(s,0); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+  function paint(){
+    opts.clockEl.textContent = fmt(remaining);
+    opts.clockEl.classList.toggle('warn', remaining<=300 && remaining>0);
+    opts.clockEl.classList.toggle('done', remaining<=0);
+  }
+  function stop(){ running=false; clearInterval(timerId); }
+  function tick(){
+    remaining--; paint();
+    if(remaining<=0){ stop(); opts.statusEl.textContent='Time is up.'; if(opts.onExpire) opts.onExpire(); }
+  }
+  function start(){
+    if(running || remaining<=0) return;
+    running=true; timerId=setInterval(tick,1000);
+    opts.startBtn.hidden=true; opts.pauseBtn.hidden=false; opts.pauseBtn.textContent='Pause';
+  }
+  opts.startBtn.onclick = start;
+  opts.pauseBtn.onclick = function(){
+    if(running){ stop(); opts.pauseBtn.textContent='Resume'; opts.statusEl.textContent='Paused.'; }
+    else { start(); opts.statusEl.textContent=''; }
+  };
+  paint();
+  return { stop: stop };
+}
+
+/* ============================== shared question-rendering primitives ============================== */
+function norm(s){ return String(s).toLowerCase().replace(/\s+/g,' ').trim(); }
+function wordCount(a){ return a.trim() ? a.trim().split(/\s+/).length : 0; }
+
+function renderQuestion(container, q, idx){
+  var w = document.createElement('div'); w.className='q'; w.id = q.domId;
+  var p = document.createElement('p'), b = document.createElement('strong');
+  b.textContent = q.num + '. ';
+  p.append(b, document.createTextNode(q.text)); w.append(p);
+  if(q.type==='tfng' || q.type==='mcq'){
+    var opts = q.type==='tfng' ? (q.labels || ['True','False','Not Given']) : q.options;
+    opts.forEach(function(o,k){
+      var l=document.createElement('label'), r=document.createElement('input');
+      r.type='radio'; r.name=q.domId; r.value=k;
+      l.append(r, document.createTextNode(' ' + (q.type==='mcq' ? String.fromCharCode(65+k)+'  ' : '') + o));
+      w.append(l);
+    });
+  } else if(q.type==='gap'){
+    var n=q.limit||2;
+    var lim=document.createElement('div'); lim.className='limit';
+    lim.textContent='NO MORE THAN ' + ({1:'ONE',2:'TWO',3:'THREE'}[n]||n) + ' WORD' + (n>1?'S':'');
+    var inp=document.createElement('input'); inp.type='text'; inp.autocomplete='off'; inp.spellcheck=false;
+    inp.setAttribute('aria-label','Answer ' + q.num);
+    w.append(lim, inp);
+  } else if(q.type==='match'){
+    var s=document.createElement('select'); s.setAttribute('aria-label','Answer ' + q.num);
+    s.append(new Option('Choose…',''));
+    q.options.forEach(function(o,k){ s.append(new Option(o, k)); });
+    w.append(s);
+  }
+  var fb=document.createElement('div'); fb.className='fb'; fb.hidden=true; w.append(fb);
+  container.append(w);
+}
+function getAnswer(q){
+  var w = $('#'+q.domId);
+  if(q.type==='tfng' || q.type==='mcq'){ var c=w.querySelector('input:checked'); return c? +c.value : null; }
+  if(q.type==='gap') return w.querySelector('input').value.trim();
+  var v = w.querySelector('select').value; return v===''? null : +v;
+}
+function isCorrect(q,a){
+  if(a===null || a==='') return false;
+  if(q.type==='gap'){
+    var words = a.split(/\s+/).filter(function(x){ return x; }).length;
+    if(words > (q.limit||2)) return false;
+    return [].concat(q.answer).some(function(x){ return norm(x)===norm(a); });
+  }
+  return a===q.answer;
+}
+function shownAnswer(q){
+  if(q.type==='gap') return [].concat(q.answer)[0];
+  if(q.type==='tfng') return (q.labels || ['True','False','Not Given'])[q.answer];
+  if(q.type==='mcq') return String.fromCharCode(65+q.answer) + '  ' + q.options[q.answer];
+  return q.options[q.answer];
+}
+
+/* ============================== READING MOCK DATA ============================== */
+var PASSAGES = {
+  p1: {
+    title: 'Passage 1 — The Domestication Syndrome',
+    html:
+      '<p><span class="para-label">A</span> Charles Darwin was among the first to note something curious: domesticated mammals, drawn from dozens of unrelated wild species — dogs, cattle, pigs, rabbits, even domesticated mink — tend to share a strikingly similar set of physical and behavioural traits, despite having no close evolutionary relationship to one another.</p>' +
+      '<p><span class="para-label">B</span> These shared traits, now referred to as the "domestication syndrome", commonly include floppy ears, shortened muzzles, patches of depigmented (white) fur, curled tails, smaller teeth, more frequent and less seasonally restricted breeding, retention of juvenile behaviours into adulthood, and, above all, tameness — a reduced fear and aggression response toward humans.</p>' +
+      '<p><span class="para-label">C</span> This pattern raises an awkward question. Breeders selecting animals purely for tameness were not, as far as anyone knows, also selecting for floppy ears or patchy coats. Why, then, should traits with no obvious connection to behaviour appear so reliably alongside it? Early explanations — that relaxed natural selection simply allowed harmless mutations to accumulate, or that the traits were an incidental side-effect of some other gene — struggled to explain why the same specific set of traits turns up again and again across entirely different species.</p>' +
+      '<p><span class="para-label">D</span> A more precise explanation, proposed by Wilkins, Wrangham and Trut in 2014, centres on neural crest cells: a transient population of cells present only in the early embryo, which migrate widely through the developing body and eventually give rise to a surprising range of adult tissues, including the adrenal medulla (central to the fear and stress response), portions of the ear and skull cartilage, pigment-producing cells, and the teeth. The hypothesis holds that a mild deficit in neural crest cell migration at this early embryonic stage could simultaneously soften an animal\'s fear response and alter these physical tissues — not because the traits were separately selected, but because they all trace back to the same embryonic cell lineage.</p>' +
+      '<p><span class="para-label">E</span> Direct support for this idea comes from a decades-long experiment begun by the Soviet geneticist Dmitri Belyaev at Novosibirsk, in which foxes were bred, generation after generation, solely on the basis of how calmly they tolerated human contact — no selection was made for appearance at all. Remarkably, within eight to ten generations, unselected physical traits began appearing spontaneously: floppy ears, curled tails, and piebald coats, exactly the traits predicted by the neural crest hypothesis.</p>' +
+      '<p><span class="para-label">F</span> The hypothesis is elegant, but researchers are careful not to overstate it. Not every domesticated species displays the full syndrome, and some traits attributed to domestication may have other causes entirely. It also remains an open question whether changes to neural crest development were a cause of early domestication or merely a later consequence of it — and whether a similar process might apply to cases of "self-domestication" in primates, a possibility some researchers have raised in relation to bonobos and, more controversially, humans.</p>'
+  },
+  p2: {
+    title: 'Passage 2 — Urban Heat Islands and the Limits of Green Infrastructure',
+    html:
+      '<p><span class="para-label">A</span> The term "urban heat island" (UHI) describes the well-documented tendency of cities to register measurably higher temperatures than the rural areas surrounding them. The effect arises chiefly from heat-absorbing dark surfaces such as asphalt and concrete, waste heat released by vehicles and buildings, and the removal of vegetation that would otherwise provide evaporative cooling. Counter-intuitively, the UHI effect is often more pronounced at night than during the day, since dense urban materials absorb heat throughout daylight hours and then release it slowly after sunset, long after rural surfaces have cooled.</p>' +
+      '<p><span class="para-label">B</span> As global average temperatures rise, the dangers posed by urban heat islands intensify accordingly. Heatwave-related mortality is disproportionately concentrated in dense urban cores with little tree cover, and low-income neighbourhoods are frequently hit hardest, a pattern often traced back to decades of underinvestment in street trees and public parks in precisely those areas.</p>' +
+      '<p><span class="para-label">C</span> In response, many city governments have turned to "green infrastructure" — street tree planting, green roofs, permeable paving, and small pocket parks — as a primary policy tool against rising urban temperatures. Several major cities have launched ambitious programmes aiming to expand tree canopy coverage by large percentages within a single decade.</p>' +
+      '<p><span class="para-label">D</span> Yet researchers studying these programmes have identified real limits to what green infrastructure alone can achieve. The cooling benefit of an individual park tends to be highly localised: it may lower temperatures within the park and on the blocks immediately adjoining it by a degree or two, but has little measurable effect on a city\'s average temperature if overall canopy coverage remains low elsewhere. Newly planted saplings, moreover, typically take fifteen to twenty years to provide the shade and transpiration of a mature tree, and competition for underground space with water, gas, and electrical utilities frequently limits where large trees can be planted at all. Green roofs, for their part, reduce heat gain at roof level but do little to cool the street-level air that pedestrians actually experience.</p>' +
+      '<p><span class="para-label">E</span> Consequently, researchers increasingly argue that effective cooling strategies must combine several approaches — reflective "cool" pavements and roofing materials that reflect rather than absorb solar radiation, building design standards that improve natural ventilation, and long-term tree planting — rather than relying on vegetation alone. Some go further, warning that treating tree-planting programmes as a stand-alone solution risks a kind of political complacency, in which harder but more effective measures, such as reducing the overall area of paved surface or regulating waste heat released by buildings, are repeatedly postponed.</p>'
+  },
+  p3: {
+    title: 'Passage 3 — The Productivity Paradox',
+    html:
+      '<p><span class="para-label">A</span> In 1987, the Nobel laureate economist Robert Solow made an observation that has since become famous among economists: "You can see the computer age everywhere but in the productivity statistics." Despite decades of heavy investment in information technology across advanced economies, aggregate productivity growth remained sluggish from the 1970s onward, interrupted only by a brief acceleration in the United States during the late 1990s and early 2000s.</p>' +
+      '<p><span class="para-label">B</span> Economists have proposed several explanations for this so-called "productivity paradox". The first is mismeasurement: official statistics struggle to capture quality improvements in goods and services, as well as free digital services such as search engines and social media, which plausibly raise consumer welfare without raising measured GDP at all. The second is implementation lag: historically, transformative general-purpose technologies have taken decades to diffuse fully through an economy, as firms gradually reorganise working practices around them — a pattern observed previously with the electrification of factories in the early twentieth century, where productivity gains only appeared once factory layouts were redesigned around electric motors rather than steam power. The third is misallocation: productivity gains appear concentrated in a small number of highly productive "frontier" firms, while laggard firms are slower to adopt new technology, a pattern that widens the dispersion of productivity levels between firms rather than lifting the economy-wide average.</p>' +
+      '<p><span class="para-label">C</span> The mismeasurement explanation, however, faces a notable challenge: if it fully accounted for the paradox, the apparent slowdown should vary according to each country\'s particular statistical methodology. Instead, a broadly similar slowdown is observed across countries using quite different methods of measuring output, a pattern that casts some doubt on mismeasurement as a complete explanation.</p>' +
+      '<p><span class="para-label">D</span> More recently, the economist Erik Brynjolfsson and colleagues have suggested that artificial-intelligence-related technologies may be undergoing an implementation lag of their own. On this view, the most transformative applications of such technology require costly complementary investments — retraining workers, redesigning business processes, and accumulating intangible organisational capital — that take considerable time to build up before productivity gains become visible in aggregate statistics. Brynjolfsson and colleagues term this pattern the "productivity J-curve": a phase in which measured productivity may actually dip before it eventually rises.</p>'
+  }
+};
+
+var READING_QUESTIONS = [
+  /* -------- Passage 1 : Matching Headings Q1-5 (8 headings, 3 distractors) -------- */
+  { num:1, passage:'p1', type:'match',
+    text:'Paragraph B',
+    options:['A catalogue of traits shared across otherwise dissimilar species','Why prior explanations failed to account for the pattern','A single embryonic cell type linked to multiple unrelated traits','Physical traits appearing as an unintended consequence of selection for behaviour alone','Caution about how far the theory can be generalised','A proposal that trait inheritance follows strict genetic rules','Evidence that domesticated animals are less likely to survive if released into the wild','A claim that tameness alone cannot be measured reliably'],
+    answer:0, why:'Paragraph B lists the shared traits of the domestication syndrome across unrelated species.' },
+  { num:2, passage:'p1', type:'match', text:'Paragraph C',
+    options:['A catalogue of traits shared across otherwise dissimilar species','Why prior explanations failed to account for the pattern','A single embryonic cell type linked to multiple unrelated traits','Physical traits appearing as an unintended consequence of selection for behaviour alone','Caution about how far the theory can be generalised','A proposal that trait inheritance follows strict genetic rules','Evidence that domesticated animals are less likely to survive if released into the wild','A claim that tameness alone cannot be measured reliably'],
+    answer:1, why:'Paragraph C shows that relaxed-selection and pleiotropy theories could not explain why the same traits kept recurring together.' },
+  { num:3, passage:'p1', type:'match', text:'Paragraph D',
+    options:['A catalogue of traits shared across otherwise dissimilar species','Why prior explanations failed to account for the pattern','A single embryonic cell type linked to multiple unrelated traits','Physical traits appearing as an unintended consequence of selection for behaviour alone','Caution about how far the theory can be generalised','A proposal that trait inheritance follows strict genetic rules','Evidence that domesticated animals are less likely to survive if released into the wild','A claim that tameness alone cannot be measured reliably'],
+    answer:2, why:'Paragraph D introduces neural crest cells as a single embryonic cell type behind multiple unrelated traits.' },
+  { num:4, passage:'p1', type:'match', text:'Paragraph E',
+    options:['A catalogue of traits shared across otherwise dissimilar species','Why prior explanations failed to account for the pattern','A single embryonic cell type linked to multiple unrelated traits','Physical traits appearing as an unintended consequence of selection for behaviour alone','Caution about how far the theory can be generalised','A proposal that trait inheritance follows strict genetic rules','Evidence that domesticated animals are less likely to survive if released into the wild','A claim that tameness alone cannot be measured reliably'],
+    answer:3, why:'Paragraph E describes floppy ears, curled tails and piebald coats appearing in foxes selected only for tameness, an unselected by-product.' },
+  { num:5, passage:'p1', type:'match', text:'Paragraph F',
+    options:['A catalogue of traits shared across otherwise dissimilar species','Why prior explanations failed to account for the pattern','A single embryonic cell type linked to multiple unrelated traits','Physical traits appearing as an unintended consequence of selection for behaviour alone','Caution about how far the theory can be generalised','A proposal that trait inheritance follows strict genetic rules','Evidence that domesticated animals are less likely to survive if released into the wild','A claim that tameness alone cannot be measured reliably'],
+    answer:4, why:'Paragraph F cautions that not every species shows the full syndrome and that key questions remain open.' },
+
+  /* -------- Passage 1 : TFNG Q6-9 -------- */
+  { num:6, passage:'p1', type:'tfng', text:'Early attempts to explain the domestication syndrome could not account for why so many unrelated traits consistently appeared together.', answer:0,
+    why:'Paragraph C: earlier explanations struggled to explain why the same specific set of traits turns up again and again.' },
+  { num:7, passage:'p1', type:'tfng', text:'Wilkins, Wrangham and Trut were the first researchers to propose a link between behaviour and physical appearance in domesticated animals.', answer:1,
+    why:'Paragraph C shows that earlier explanations already attempted to account for the same co-occurring traits before the 2014 proposal, so Wilkins and colleagues were not the first to link behaviour and appearance under domestication.' },
+  { num:8, passage:'p1', type:'tfng', text:'Neural crest cells remain present in the body for the whole lifespan of a domesticated animal.', answer:1,
+    why:'Paragraph D describes neural crest cells as a transient population present only in the early embryo, not throughout life.' },
+  { num:9, passage:'p1', type:'tfng', text:'The Belyaev fox-breeding programme was funded by a university in Western Europe.', answer:2,
+    why:'The passage gives no information about how the fox-breeding programme was funded, only that it was run by a Soviet geneticist at Novosibirsk.' },
+
+  /* -------- Passage 1 : Summary completion Q10-13 -------- */
+  { num:10, passage:'p1', type:'gap', limit:1,
+    text:'Summary: The neural crest hypothesis proposes that many domestication-syndrome traits can be traced to a single ______ population that is active only in the early embryo.',
+    answer:['cell'], why:'Paragraph D describes neural crest cells as a population active only in the early embryo.' },
+  { num:11, passage:'p1', type:'gap', limit:1,
+    text:'This cell type eventually forms both the fear and ______ response system and several physical structures such as cartilage and pigment cells.',
+    answer:['stress'], why:'Paragraph D links neural crest cells to the adrenal medulla, described as central to the fear and stress response.' },
+  { num:12, passage:'p1', type:'gap', limit:1,
+    text:'The clearest evidence for this idea comes from a breeding programme in which animals were selected purely for calm behaviour toward humans, with no attempt to influence their physical ______.',
+    answer:['traits'], why:'Paragraph E: foxes were selected only for tameness, not for any physical trait.' },
+  { num:13, passage:'p1', type:'gap', limit:1,
+    text:'Even so, traits such as floppy ears and ______ coats appeared after only a limited number of generations.',
+    answer:['piebald'], why:'Paragraph E: floppy ears, curled tails and piebald coats appeared spontaneously within eight to ten generations.' },
+
+  /* -------- Passage 2 : TFNG Q14-18 -------- */
+  { num:14, passage:'p2', type:'tfng', text:'Urban surfaces absorb more heat during the day than they release back into the air at night.', answer:2,
+    why:'The passage explains that heat is released slowly after sunset but never states whether this is more or less than the amount absorbed during the day.' },
+  { num:15, passage:'p2', type:'tfng', text:'The removal of vegetation is identified as a contributing cause of the urban heat island effect, in addition to heat-absorbing surfaces.', answer:0,
+    why:'Paragraph A lists both heat-absorbing surfaces and the removal of vegetation that would otherwise provide evaporative cooling.' },
+  { num:16, passage:'p2', type:'tfng', text:'Neighbourhoods with high heatwave mortality always have below-average tree cover.', answer:1,
+    why:'Paragraph B says mortality is frequently concentrated in areas with little tree cover, a qualified pattern that the word always overstates.' },
+  { num:17, passage:'p2', type:'tfng', text:'A park cools the air within its own boundaries more effectively than it cools the air on neighbouring streets.', answer:2,
+    why:'Paragraph D states a park may lower temperatures within itself and on adjoining blocks by a degree or two, without comparing the size of the two effects.' },
+  { num:18, passage:'p2', type:'tfng', text:'The passage presents reflective pavements and roofing materials as a replacement for tree planting rather than a complement to it.', answer:1,
+    why:'Paragraph E recommends combining several approaches rather than relying on vegetation alone, meaning reflective materials are meant to complement tree planting, not replace it.' },
+
+  /* -------- Passage 2 : MCQ Q19-22 -------- */
+  { num:19, passage:'p2', type:'mcq', text:'Based on the passage, which of the following best explains why low-income neighbourhoods are disproportionately affected by heatwave mortality?',
+    options:['They are located further from rivers and coastlines than wealthier areas','They have historically received less investment in street trees and parks','Residents are less likely to own air conditioning units','They tend to be situated at a lower altitude than the rest of the city'],
+    answer:1, why:'Paragraph B traces the pattern to decades of underinvestment in street trees and parks in low-income areas; the other options are plausible but never stated in the passage.' },
+  { num:20, passage:'p2', type:'mcq', text:'Which piece of evidence would most directly support the claim that a single park cannot meaningfully lower a whole city average temperature?',
+    options:['Evidence that a citywide rise in canopy coverage is needed before average temperatures fall','Evidence that the park itself cools by one or two degrees','Evidence that newly planted trees eventually mature','Evidence that green roofs reduce heat gain at building level'],
+    answer:0, why:'Paragraph D states that the localised cooling effect of a single park barely shows up in the city average unless overall canopy coverage rises elsewhere, which is exactly what option one describes.' },
+  { num:21, passage:'p2', type:'mcq', text:'The passage mentions competition for underground space with utilities in order to',
+    options:['criticise city governments for poor infrastructure planning','illustrate one practical reason large trees cannot always be planted where they are wanted','argue that green roofs are a better investment than street trees','explain why tree-planting budgets have been cut in several cities'],
+    answer:1, why:'Paragraph D raises underground utility competition as a specific practical limit on where large trees can be planted, not as criticism, a roof-versus-tree argument, or a budget explanation.' },
+  { num:22, passage:'p2', type:'mcq', text:'Which statement best reflects the overall argument of the final paragraph?',
+    options:['Tree planting should be abandoned in favour of reflective materials','A combined approach is more effective than tree planting alone, and an excessive focus on trees carries its own risk','Cooling strategies are a matter of personal choice for individual building owners','There is currently no reliable way to reduce urban heat island effects'],
+    answer:1, why:'Paragraph E argues for combining several approaches and warns that treating tree planting as a stand-alone solution risks political complacency.' },
+
+  /* -------- Passage 2 : Matching Information Q23-26 -------- */
+  { num:23, passage:'p2', type:'match', text:'a statement comparing the overall effectiveness of combining several cooling measures with relying on tree planting alone',
+    options:['Paragraph A','Paragraph B','Paragraph C','Paragraph D','Paragraph E'], answer:4,
+    why:'Paragraph E argues that combined approaches work better than relying on vegetation alone.' },
+  { num:24, passage:'p2', type:'match', text:'a stated time frame within which cities have aimed to expand tree canopy coverage',
+    options:['Paragraph A','Paragraph B','Paragraph C','Paragraph D','Paragraph E'], answer:2,
+    why:'Paragraph C mentions programmes aiming to expand canopy coverage within a single decade.' },
+  { num:25, passage:'p2', type:'match', text:'a specific figure showing how much a tree-planting measure might lower temperature within a limited area',
+    options:['Paragraph A','Paragraph B','Paragraph C','Paragraph D','Paragraph E'], answer:3,
+    why:'Paragraph D states a park may lower temperatures within itself and nearby blocks by a degree or two.' },
+  { num:26, passage:'p2', type:'match', text:'an explanation for why the urban heat effect persists after sunset',
+    options:['Paragraph A','Paragraph B','Paragraph C','Paragraph D','Paragraph E'], answer:0,
+    why:'Paragraph A explains that urban materials release absorbed daytime heat slowly after sunset.' },
+
+  /* -------- Passage 3 : MCQ Q27-30 -------- */
+  { num:27, passage:'p3', type:'mcq', text:'Which of the following best captures the significance of the remark made by Robert Solow, according to the passage?',
+    options:['Computers were overhyped and had little real economic impact','The expected productivity benefits of computing were not reflected in the official data of the time','Productivity statistics were deliberately falsified during the 1980s','Computers were too expensive for most firms to purchase'],
+    answer:1, why:'Paragraph A reports the remark that the computer age was visible everywhere except in the productivity statistics.' },
+  { num:28, passage:'p3', type:'mcq', text:'What is the main point the passage makes about the mismeasurement explanation?',
+    options:['It has been completely disproved by subsequent research','It cannot be the sole explanation, since the slowdown appears regardless of differing measurement approaches','It applies only to developing economies','It was first proposed by Brynjolfsson and colleagues'],
+    answer:1, why:'Paragraph C notes that a similar slowdown appears across countries using different measurement methods, which weakens mismeasurement as a complete explanation; Brynjolfsson and colleagues are introduced later, in connection with a different idea.' },
+  { num:29, passage:'p3', type:'mcq', text:'The example of electrification is used to support which broader claim in the passage?',
+    options:['That productivity gains from a transformative technology may not appear until work practices are redesigned around it','That electrification was a less significant technology than computing','That productivity gains are always delayed by at least fifty years','That factory owners resisted adopting new technologies'],
+    answer:0, why:'Paragraph B uses electrification to illustrate how long a general-purpose technology can take to diffuse fully, since gains only appeared once factory layouts were redesigned around it.' },
+  { num:30, passage:'p3', type:'mcq', text:'What distinguishes the productivity J-curve from the general implementation-lag explanation described earlier in the passage?',
+    options:['Nothing; the passage treats them as exactly the same claim','The J-curve specifically proposes that productivity may fall before it eventually rises','The J-curve applies only to manufacturing industries','The J-curve was observed before the implementation-lag explanation was proposed'],
+    answer:1, why:'Paragraph B describes implementation lag only as slow diffusion, while paragraph D adds the more specific claim that productivity may dip before rising, the feature named the J-curve.' },
+
+  /* -------- Passage 3 : gap completion Q31-34 -------- */
+  { num:31, passage:'p3', type:'gap', limit:1,
+    text:'One explanation attributes part of the paradox to the fact that productivity gains cluster among a small number of highly efficient ______ firms.',
+    answer:['frontier'], why:'Paragraph B refers to a small number of highly productive frontier firms.' },
+  { num:32, passage:'p3', type:'gap', limit:1,
+    text:'This leaves other companies behind and widens the ______ in productivity levels between firms rather than lifting the economy-wide average.',
+    answer:['dispersion'], why:'Paragraph B states this pattern widens the dispersion of productivity levels between firms.' },
+  { num:33, passage:'p3', type:'gap', limit:1,
+    text:'Some economists argue that realising the full benefits of artificial intelligence will first require firms to redesign their business ______.',
+    answer:['processes'], why:'Paragraph D mentions redesigning business processes as one of the costly complementary investments required.' },
+  { num:34, passage:'p3', type:'gap', limit:1,
+    text:'Because of this delay, some economists have named the pattern the productivity ______.',
+    answer:['J-curve','j-curve'], why:'Paragraph D names this pattern the productivity J-curve.' },
+
+  /* -------- Passage 3 : short answer Q35-37 -------- */
+  { num:35, passage:'p3', type:'gap', limit:2,
+    text:'According to the passage, in which decade did the productivity slowdown begin?',
+    answer:['the 1970s','1970s'],
+    why:'Paragraph A states that productivity growth remained sluggish from the 1970s onward.' },
+  { num:36, passage:'p3', type:'gap', limit:2,
+    text:'What two-word term does the passage use for intangible investments such as staff retraining and process redesign?',
+    answer:['organisational capital','organizational capital'], why:'Paragraph D refers to accumulating intangible organisational capital.' },
+  { num:37, passage:'p3', type:'gap', limit:2,
+    text:'Give ONE free digital service the passage mentions as an example of a welfare gain not captured in measured GDP.',
+    answer:['search engines','social media'], why:'Paragraph B gives search engines and social media as examples of free digital services.' },
+
+  /* -------- Passage 3 : matching sentence endings Q38-40 -------- */
+  { num:38, passage:'p3', type:'match', text:'Official productivity statistics often fail to capture...',
+    options:['quality improvements and free digital services that raise welfare without affecting measured GDP','be replaced entirely by newer, more productive competitors','capture most of the benefit from new technology while other firms lag behind','be regulated out of the market by government policy','diffuse through an economy as firms reorganise how they work','reduce their investment in retraining once new technology is adopted'],
+    answer:0, why:'Paragraph B: mismeasurement fails to capture quality gains and free digital services.' },
+  { num:39, passage:'p3', type:'match', text:'New general-purpose technologies have historically needed decades to...',
+    options:['quality improvements and free digital services that raise welfare without affecting measured GDP','be replaced entirely by newer, more productive competitors','capture most of the benefit from new technology while other firms lag behind','be regulated out of the market by government policy','diffuse through an economy as firms reorganise how they work','reduce their investment in retraining once new technology is adopted'],
+    answer:4, why:'Paragraph B: technologies diffuse fully through an economy as firms reorganise around them.' },
+  { num:40, passage:'p3', type:'match', text:'A small number of frontier firms tend to...',
+    options:['quality improvements and free digital services that raise welfare without affecting measured GDP','be replaced entirely by newer, more productive competitors','capture most of the benefit from new technology while other firms lag behind','be regulated out of the market by government policy','diffuse through an economy as firms reorganise how they work','reduce their investment in retraining once new technology is adopted'],
+    answer:2, why:'Paragraph B: frontier firms capture most productivity gains while laggards fall behind.' }
+];
+READING_QUESTIONS.forEach(function(q){ q.domId = 'rq' + q.num; });
+
+var readingRoot = $('#readingRoot');
+['p1','p2','p3'].forEach(function(pid, i){
+  var group = document.createElement('div');
+  group.className = 'passagegroup split' + (i===0 ? ' active' : '');
+  group.id = 'group-' + pid;
+  var left = document.createElement('section'); left.className='pane'; left.setAttribute('aria-label','Passage text');
+  left.innerHTML = '<h2 id="passage-' + pid + '">' + PASSAGES[pid].title + '</h2>' + PASSAGES[pid].html;
+  var right = document.createElement('section'); right.className='pane'; right.setAttribute('aria-label','Questions');
+  group.append(left, right);
+  readingRoot.append(group);
+  READING_QUESTIONS.filter(function(q){ return q.passage===pid; }).forEach(function(q){ renderQuestion(right, q); });
+});
+// store original passage HTML for "clear highlights"
+var ORIGINAL_PASSAGE_HTML = {};
+['p1','p2','p3'].forEach(function(pid){ ORIGINAL_PASSAGE_HTML[pid] = $('#group-'+pid+' .pane').innerHTML; });
+
+var currentPassage = 'p1';
+$$('.ptabs button').forEach(function(btn){
+  btn.onclick = function(){
+    $$('.ptabs button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    $$('.passagegroup').forEach(function(g){ g.classList.remove('active'); });
+    currentPassage = btn.dataset.p;
+    $('#group-'+currentPassage).classList.add('active');
+  };
+});
+
+$('#r-hl').onclick = function(){
+  var sel = window.getSelection();
+  var art = $('#group-'+currentPassage+' .pane');
+  if(!sel || !sel.rangeCount || sel.isCollapsed){ $('#r-status').textContent='Select some text in the passage first.'; return; }
+  var r = sel.getRangeAt(0);
+  if(!art.contains(r.commonAncestorContainer)){ $('#r-status').textContent='Select text inside the passage.'; return; }
+  try{ var m=document.createElement('mark'); r.surroundContents(m); sel.removeAllRanges(); $('#r-status').textContent=''; }
+  catch(e){ $('#r-status').textContent='Select within one paragraph, then press Highlight.'; }
+};
+$('#r-hlclear').onclick = function(){
+  ['p1','p2','p3'].forEach(function(pid){
+    var leftPane = $('#group-'+pid+' .pane');
+    leftPane.querySelectorAll('mark').forEach(function(m){ m.replaceWith(document.createTextNode(m.textContent)); });
+  });
+  $('#r-status').textContent='Highlights cleared.';
+};
+
+var readingTimer = makeTimer({
+  minutes: 60, clockEl: $('#r-clock'), startBtn: $('#r-start'), pauseBtn: $('#r-pause'), statusEl: $('#r-status'),
+  onExpire: function(){ $$('#readingRoot input, #readingRoot select').forEach(function(e){ e.disabled = true; }); }
+});
+
+var readingRevealed = false;
+$('#r-reveal').onclick = function(){
+  if(readingRevealed) return; readingRevealed = true; readingTimer.stop();
+  $$('#readingRoot input, #readingRoot select').forEach(function(e){ e.disabled = true; });
+  $('#r-reveal').disabled = true;
+  var good=[], review=[];
+  READING_QUESTIONS.forEach(function(q){
+    var a = getAnswer(q), ok = isCorrect(q,a);
+    var fb = $('#'+q.domId).querySelector('.fb');
+    fb.hidden = false; fb.className = 'fb ' + (ok?'ok':'bad');
+    fb.textContent = (ok ? '✔ Correct. ' : '✖ Answer: ' + shownAnswer(q) + '. ') + (ok ? '' : (q.why||''));
+    (ok?good:review).push(q.num);
+  });
+  var html = '<strong>' + good.length + ' of ' + READING_QUESTIONS.length + ' correct.</strong> ';
+  if(good.length) html += 'What worked: questions ' + good.join(', ') + '. ';
+  if(review.length) html += 'Start your review with just these: ' + review.slice(0,3).join(', ') + '.';
+  else html += 'Nothing to review — excellent work.';
+  html += '<div class="callout"><strong>Turkish L1 pattern: Not Given vs False</strong> If you missed any Not Given items, check whether the passage actually contradicts the statement (False) or simply never raises the idea at all (Not Given) — this is the single most common Turkish-L1 reading error.</div>';
+  var summary = $('#readingSummary'); summary.innerHTML = html; summary.classList.add('show');
+  summary.scrollIntoView({block:'start'});
+};
+
+/* ============================== WRITING TASK 1 MOCK ============================== */
+var W1_DATA = {
+  years: [1998, 2008, 2018],
+  sources: ['Coal','Natural gas','Nuclear','Hydropower','Wind & solar'],
+  pct: { 1998:[45,25,15,12,3], 2008:[35,28,18,11,8], 2018:[18,30,15,10,27] },
+  total: { 1998:420, 2008:510, 2018:600 }
+};
+(function buildW1Visual(){
+  var colors = ['#5b6b7a','#1f5fae','#8a5fae','#2f9e66','#e0a62b'];
+  var barW=46, gap=70, chartH=200, baseY=220, x0=70;
+  var svg = '<svg viewBox="0 0 560 300" role="img" aria-label="Stacked bar chart of electricity generation by source, 1998, 2008 and 2018">';
+  W1_DATA.years.forEach(function(yr, yi){
+    var x = x0 + yi*gap*2.1;
+    var y = baseY;
+    W1_DATA.pct[yr].forEach(function(p, si){
+      var h = p/100*chartH;
+      y -= h;
+      svg += '<rect x="'+x+'" y="'+y+'" width="'+barW+'" height="'+h+'" fill="'+colors[si]+'"></rect>';
+    });
+    svg += '<text x="'+(x+barW/2)+'" y="'+(baseY+18)+'" font-size="13" text-anchor="middle">'+yr+'</text>';
+  });
+  W1_DATA.sources.forEach(function(s,si){
+    svg += '<rect x="'+(x0)+'" y="'+(258+si*9)+'" width="9" height="9" fill="'+colors[si]+'"></rect>';
+    svg += '<text x="'+(x0+14)+'" y="'+(266+si*9)+'" font-size="11">'+s+'</text>';
+  });
+  svg += '<text x="280" y="16" font-size="13" text-anchor="middle" font-weight="700">Electricity generation by source (% of total)</text>';
+  svg += '</svg>';
+  var tableHtml = '<table><tr><th>Year</th><th>Total electricity produced</th></tr>' +
+    W1_DATA.years.map(function(yr){ return '<tr><td>'+yr+'</td><td>'+W1_DATA.total[yr]+' TWh</td></tr>'; }).join('') +
+    '</table>';
+  $('#w1-visual').innerHTML = svg + tableHtml;
+})();
+
+function wireEssay(prefix, minWords){
+  var ta = $('#'+prefix+'-essay');
+  function upd(){
+    var t = ta.value.trim(), n = wordCount(ta.value);
+    $('#'+prefix+'-wc').textContent = n;
+    $('#'+prefix+'-pc').textContent = t ? t.split(/\n+/).filter(function(x){ return x.trim(); }).length : 0;
+    var wm = $('#'+prefix+'-wmin');
+    wm.textContent = n >= minWords ? '✔ minimum of ' + minWords + ' reached' : 'minimum ' + minWords + ' words';
+    wm.className = n >= minWords ? 'met' : 'limit';
+  }
+  ta.addEventListener('input', upd); upd();
+}
+wireEssay('w1', 150);
+wireEssay('w2', 250);
+
+var w1Timer = makeTimer({ minutes:20, clockEl:$('#w1-clock'), startBtn:$('#w1-start'), pauseBtn:$('#w1-pause'), statusEl:$('#w1-status'),
+  onExpire: function(){ $('#w1-essay').disabled = true; } });
+var w2Timer = makeTimer({ minutes:40, clockEl:$('#w2-clock'), startBtn:$('#w2-start'), pauseBtn:$('#w2-pause'), statusEl:$('#w2-status'),
+  onExpire: function(){ $('#w2-essay').disabled = true; } });
+
+var W1_MODEL = 'The bar chart shows how the mix of sources used to generate electricity in Country Y changed across 1998, 2008 and 2018, while the table shows the overall volume of electricity produced in those same years.<br><br>' +
+  'Overall, the country moved away from coal and towards a more diversified mix dominated by natural gas and renewables, while total output rose steadily across the twenty-year period.<br><br>' +
+  'In 1998, coal was by far the largest source, accounting for almost half of all electricity generated (45%), followed by natural gas (25%) and nuclear power (15%). Hydropower contributed a further 12%, whereas wind and solar supplied just 3%, a negligible share at that time. By 2018, this picture had changed considerably: coal\'s share had fallen to only 18%, overtaken by both natural gas, which had risen gradually to 30%, and wind and solar, which had surged ninefold to 27%, the largest percentage increase of any source shown. Nuclear and hydropower, by contrast, remained comparatively stable throughout the period, fluctuating only slightly around 15% and 11% respectively.<br><br>' +
+  'This shift in the generation mix occurred alongside a steady rise in total electricity output, from 420 TWh in 1998 to 510 TWh in 2008 and 600 TWh in 2018, an increase of over 40% across the two decades.';
+var W1_NOTES = '<ul><li><strong>Task Achievement:</strong> covers both data sets, selects the key comparisons (coal’s decline, wind/solar’s rise, steady output growth) rather than listing every figure — Band 7–8.</li>' +
+  '<li><strong>Coherence &amp; Cohesion:</strong> clear overview-then-detail structure; linkers "whereas", "by contrast", "This shift... occurred alongside" connect ideas across sentences — Band 7–8.</li>' +
+  '<li><strong>Lexical Resource:</strong> varied trend language (surged, fluctuated, remained comparatively stable) and precise comparison ("the largest percentage increase of any source shown") — Band 7–8.</li>' +
+  '<li><strong>Grammar:</strong> accurate complex sentences, passive and comparative structures used naturally — Band 7–8.</li></ul>';
+$('#w1-reveal').onclick = function(){
+  w1Timer.stop(); $('#w1-essay').disabled = true; $('#w1-reveal').disabled = true;
+  var out = $('#w1-out');
+  out.innerHTML = '<div class="panel"><h3>Band 7–8 model answer</h3><p>' + W1_MODEL + '</p></div>' +
+    '<div class="panel"><h3>Band notes</h3>' + W1_NOTES + '</div>' +
+    '<div class="callout"><strong>Turkish L1 pattern</strong> Check your own answer for dropped articles ("the largest share", not "largest share") and for passive constructions where English doesn\'t need a named agent ("output rose" / "was produced", rather than forcing in "they produced").</div>';
+  out.classList.add('show'); out.scrollIntoView({block:'start'});
+};
+
+var W2_MODEL = 'Universities today face competing demands: some argue their central purpose is to prepare students for specific careers, while others maintain that a university\'s true value lies in broadening a person\'s intellectual horizons, regardless of whether this leads directly to employment. This essay will examine both views before arguing that, while career preparation matters, the broader intellectual development argument carries more weight in the long term.<br><br>' +
+  'Those who prioritise career readiness point to the practical reality that most students attend university partly to improve their future earning potential. A degree in engineering or nursing, for instance, provides specific, certifiable skills that employers actively seek, and graduates in such fields often secure stable employment more quickly than those from less vocationally focused courses. In an era of rising tuition costs, this argument carries genuine weight for many families.<br><br>' +
+  'On the other hand, supporters of the broader view argue that a university education should cultivate critical thinking, intellectual curiosity, and the ability to adapt to a rapidly changing job market, none of which can be reduced to a single career path. A graduate who has studied philosophy or history, for example, may go on to work in business, law, or public policy, applying analytical skills that no narrow vocational course could have anticipated. Given how quickly specific technical skills can become outdated, this adaptability arguably matters more over a working lifetime than any single qualification.<br><br>' +
+  'In my view, while career-focused study remains valuable for certain professions, universities ultimately serve students best by developing the flexible, transferable thinking skills that allow graduates to adapt as the job market itself continues to change. A narrow focus on immediate employability risks leaving graduates unprepared for careers that do not yet exist.';
+var W2_NOTES = '<ul><li><strong>Task Response:</strong> both views are discussed with specific support, and a clear, consistent personal position is stated in the introduction and restated in the conclusion — Band 7–8.</li>' +
+  '<li><strong>Coherence &amp; Cohesion:</strong> each body paragraph opens with a clear topic sentence; "On the other hand", "Given how quickly... " link ideas smoothly — Band 7–8.</li>' +
+  '<li><strong>Lexical Resource:</strong> precise, topic-specific vocabulary ("vocationally focused", "transferable thinking skills") used naturally, not mechanically — Band 7–8.</li>' +
+  '<li><strong>Grammar:</strong> a wide range of complex structures (relative clauses, conditionals, concessive clauses) used with control and few errors — Band 7–8.</li></ul>';
+$('#w2-reveal').onclick = function(){
+  w2Timer.stop(); $('#w2-essay').disabled = true; $('#w2-reveal').disabled = true;
+  var out = $('#w2-out');
+  out.innerHTML = '<div class="panel"><h3>Band 7–8 model answer</h3><p>' + W2_MODEL + '</p></div>' +
+    '<div class="panel"><h3>Band notes</h3>' + W2_NOTES + '</div>' +
+    '<div class="callout"><strong>Turkish L1 pattern</strong> Check your essay for discourse connectors translated too literally from Turkish (e.g. "In addition to this situation") — prefer natural English linkers like "Moreover," or "What is more,". Also check long noun phrases for a missing relative pronoun (who/which/that/where).</div>';
+  out.classList.add('show'); out.scrollIntoView({block:'start'});
+};
+</script>
+</body>
+</html>
